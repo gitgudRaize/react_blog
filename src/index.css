@@ -1,13 +1,275 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #efefef;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  box-shadow: 0 0 10px black;
+}
+
+.Header,
+.Footer {
+  width: 100%;
+  background-color: #262626;
+  color: #fafafa;
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.HeaderNav {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.Header {
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header svg {
+  font-size: 2rem;
+}
+
+.Footer {
+  position: sticky;
+  bottom: 0;
+  text-align: center;
+}
+
+.Nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #262626;
+}
+
+.Nav ul {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: bold;
+  list-style-type: none;
+}
+
+.Nav li a {
+  display: block;
+  background-color: #262626;
+  color: #fafafa;
+  text-decoration: none;
+  outline: none;
+  padding: 0.62rem 1rem;
+}
+
+.Nav li a:hover,
+.Nav li a:focus,
+.nav-selected {
+  background-color: #fafafa;
+  color: black;
+  cursor: pointer;
+}
+
+.Nav label {
+  position: absolute;
+  left: -99999px;
+}
+
+.searchForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.searchForm input[type="text"] {
+  width: 100%;
+  min-height: 2rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  padding: 0.25rem 1rem;
+  border-radius: 2rem;
+  outline: none;
+}
+
+main {
+  width: 100%;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0.5rem;
+  overflow-y: auto;
+}
+
+.postContainer,
+.postLink {
+  background-color: white;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+}
+
+.postLink {
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
+.postLink:hover,
+.postLink:focus {
+  background-color: hsl(167, 90%, 92%);
+}
+
+.postDate {
+  font-size: 0.8rem;
+  padding-bottom: 0.5rem;
+}
+
+.postBody {
+  text-align: justify;
+}
+
+button {
+  height: 48px;
+  min-width: 48px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.PostPage button {
+  float: right;
+}
+
+.deleteButton {
+  background-color: red;
+  color: #fafafa;
+}
+
+.NewPost,
+.EditPost,
+.About {
+  padding: 1rem 1.5rem;
+}
+
+.About h2,
+.Missing h2,
+.NewPost h2,
+.EditPost h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.NewPost form,
+.EditPost form {
+  display: flex;
+  flex-direction: column;
+}
+
+.NewPost input[type="text"],
+.EditPost input[type="text"],
+.NewPost textarea,
+.EditPost textarea {
+  width: 100%;
+  min-height: 32px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 15px;
+  outline: none;
+}
+
+.NewPost textarea,
+.EditPost textarea {
+  min-height: 120px;
+}
+
+.NewPost button,
+.EditPost button {
+  margin: 0 100px;
+}
+
+.About p,
+.Missing p {
+  text-align: justify;
+}
+
+.statusMsg {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: auto;
+}
+
+/* Tablet size */
+@media only screen and (min-width: 610px) {
+  html {
+    font-size: 22px;
+  }
+
+  .Nav {
+    flex-direction: row-reverse;
+  }
+
+  .searchForm {
+    width: 50%;
+  }
+
+  .NewPost button,
+  .EditPost button {
+    margin: 0 275px;
+  }
+}
+
+/* Monitor/Laptop size */
+@media only screen and (min-width: 992px) {
+  .App {
+    width: 800px;
+  }
+
+  .Header svg {
+    font-size: 2.5rem;
+  }
 }
